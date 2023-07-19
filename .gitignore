@@ -1,0 +1,7 @@
+# Arquivos e pastas a serem ignorados pelo Git
+
+
+connectDB.php
+
+
+.idea/
