@@ -5,10 +5,19 @@ date_default_timezone_set('America/Sao_Paulo');
 session_start();
 require_once 'connectDB.php';
 
+function clear($input){ // limpa os inputs do form
+    global $connectBD;
+    //SQL
+    $var = mysqli_escape_string($connectBD, $input);
+    //XSS
+    $var = htmlspecialchars($var);
+    return $var;
+}
+
 if (isset($_POST['btn-cadastrar'])) {
     //PEGA OS VALORES DO FORMULARIO
-    $tarefa = mysqli_escape_string($connectBD, $_POST['titulo']);
-    $descricao = mysqli_escape_string($connectBD, $_POST['descricao']);
+    $tarefa = clear($_POST['titulo']);
+    $descricao = clear($_POST['descricao']);
     $dataAtual = date('Y-m-d H:i:s'); // PEGA DIA,MES,ANO,HORA E MINUTOS ATUAIS
 
     //CRIA A QUERY PARA INSERIR OS VALORES NO BD

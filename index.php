@@ -73,7 +73,7 @@ require_once 'actions/connectDB.php';
                 <td><?= $dado['id'] ?></td>
                 <td><?= $dado['titulo'] ?></td>
                 <td><?= $dado['descricao'] ?></td>
-                <td><?= $dado['criada'] ?></td>
+                <td><?= date('d/m/Y H:i', strtotime($dado['criada'])) ?></td>
                 <td>
                     <a href="editar.php?id=<?= $dado['id'] ?>" class="btn btn-primary">Editar</a>
                     <a href="#" class="btn btn-danger" name="btn-excluir" data-bs-toggle="modal" data-bs-target="#confirmarExclusaoModal" data-id="<?= $dado['id'] ?>">Excluir</a>
